@@ -77,94 +77,94 @@ export const getImageUrl = (path, size = 'original', type = 'poster') => {
 const tmdbApi = {
     // Movies
     getTrendingMovies: async (page = 1) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.trendingMovies, { page }");
+        const url = buildUrl(endpoints.trendingMovies, { page });
         const response = await fetch(url);
         return response.json();
     },
 
     getPopularMovies: async (page = 1) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.popularMovies, { page }");
+        const url = buildUrl(endpoints.popularMovies, { page });
         const response = await fetch(url);
         return response.json();
     },
 
     getTopRatedMovies: async (page = 1) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.topRatedMovies, { page }");
+        const url = buildUrl(endpoints.topRatedMovies, { page });
         const response = await fetch(url);
         return response.json();
     },
 
     getNowPlayingMovies: async (page = 1) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.nowPlayingMovies, { page }");
+        const url = buildUrl(endpoints.nowPlayingMovies, { page });
         const response = await fetch(url);
         return response.json();
     },
 
     getMovieDetails: async (id) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.movieDetails(id"), { append_to_response: 'credits,videos' });
+        const url = buildUrl(endpoints.movieDetails(id), { append_to_response: 'credits,videos' });
         const response = await fetch(url);
         return response.json();
     },
 
     getSimilarMovies: async (id, page = 1) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.similarMovies(id"), { page });
+        const url = buildUrl(endpoints.similarMovies(id), { page });
         const response = await fetch(url);
         return response.json();
     },
 
     // TV Shows
     getTrendingTV: async (page = 1) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.trendingTV, { page }");
+        const url = buildUrl(endpoints.trendingTV, { page });
         const response = await fetch(url);
         return response.json();
     },
 
     getPopularTV: async (page = 1) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.popularTV, { page }");
+        const url = buildUrl(endpoints.popularTV, { page });
         const response = await fetch(url);
         return response.json();
     },
 
     getTopRatedTV: async (page = 1) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.topRatedTV, { page }");
+        const url = buildUrl(endpoints.topRatedTV, { page });
         const response = await fetch(url);
         return response.json();
     },
 
     getTVDetails: async (id) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.tvDetails(id"), { append_to_response: 'credits,videos' });
+        const url = buildUrl(endpoints.tvDetails(id), { append_to_response: 'credits,videos' });
         const response = await fetch(url);
         return response.json();
     },
 
     // Search
     searchMulti: async (query, page = 1) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.searchMulti, { query, page }");
+        const url = buildUrl(endpoints.searchMulti, { query, page });
         const response = await fetch(url);
         return response.json();
     },
 
     searchMovies: async (query, page = 1) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.searchMovie, { query, page }");
+        const url = buildUrl(endpoints.searchMovie, { query, page });
         const response = await fetch(url);
         return response.json();
     },
 
     searchTV: async (query, page = 1) => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.searchTV, { query, page }");
+        const url = buildUrl(endpoints.searchTV, { query, page });
         const response = await fetch(url);
         return response.json();
     },
 
     // Genres
     getMovieGenres: async () => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.movieGenres");
+        const url = buildUrl(endpoints.movieGenres);
         const response = await fetch(url);
         return response.json();
     },
 
     getTVGenres: async () => {
-        const url = buildurl("/Portfolio/Company/filmaura/endpoints.tvGenres");
+        const url = buildUrl(endpoints.tvGenres);
         const response = await fetch(url);
         return response.json();
     }

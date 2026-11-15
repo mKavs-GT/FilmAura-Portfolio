@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HashRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { AuthProvider } from './context/AuthContext';
 import { WatchLaterProvider } from './context/WatchLaterContext';

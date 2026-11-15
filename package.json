@@ -1,0 +1,12 @@
+{
+  "name": "filmaura-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npm --prefix filmaura/FilmAura run dev",
+    "build": "npm --prefix filmaura/FilmAura run build",
+    "preview": "npm --prefix filmaura/FilmAura run preview",
+    "lint": "npm --prefix filmaura/FilmAura run lint"
+  }
+}
