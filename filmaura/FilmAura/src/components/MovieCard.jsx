@@ -28,7 +28,16 @@ const MovieCard = ({ movie, showProgress }) => {
     return (
         <ScrollReveal y={40} duration={0.7} width="auto">
             <div className="movie-card" onClick={handleWatchNow}>
-                <img src={movie.image} alt={movie.title} className="card-image" />
+                <img src={movie.image} alt={movie.title} className="card-image" loading="lazy" />
+
+                {/* Quick add/remove list button for mobile */}
+                <button
+                    className={`card-quick-list-btn ${isInWatchList ? 'active' : ''}`}
+                    onClick={handleListAction}
+                    aria-label={isInWatchList ? "Remove from My List" : "Add to My List"}
+                >
+                    {isInWatchList ? <FaCheck /> : <FaPlus />}
+                </button>
 
                 {showProgress && movie.progress !== undefined && (
                     <div className="card-progress-container">

@@ -103,3 +103,111 @@
 .profile-section {
     margin-top: 2rem;
 }
+
+@media (max-width: 768px) {
+    .profile-page {
+        padding-top: calc(var(--nav-height, 60px) + 20px);
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .profile-info {
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .profile-avatar-lg {
+        width: 72px;
+        height: 72px;
+    }
+
+    .profile-avatar-placeholder {
+        width: 72px !important;
+        height: 72px !important;
+        margin-right: 0 !important;
+    }
+
+    .profile-text h1 {
+        font-size: 1.45rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .profile-text p {
+        font-size: 0.9rem;
+    }
+
+    .profile-actions {
+        display: flex;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    .profile-actions .btn {
+        flex: 1;
+        min-height: 44px;
+        margin-right: 0 !important;
+        font-size: 0.9rem;
+        padding: 0.7rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-details {
+        padding: 1.25rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+    }
+
+    .detail-section {
+        margin-bottom: 1.2rem;
+    }
+
+    .detail-section h3 {
+        font-size: 0.82rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .detail-section p {
+        font-size: 0.92rem;
+    }
+
+    .profile-section h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-header {
+        gap: 1rem;
+    }
+
+    .profile-avatar-lg {
+        width: 64px;
+        height: 64px;
+    }
+
+    .profile-avatar-placeholder {
+        width: 64px !important;
+        height: 64px !important;
+    }
+
+    .profile-text h1 {
+        font-size: 1.25rem;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+    }
+
+    .profile-actions .btn {
+        width: 100%;
+    }
+}

@@ -7,7 +7,7 @@ import EditProfileModal from '../components/EditProfileModal';
 import '../styles/Profile.css';
 
 const Profile = () => {
-    const { user, logout, watchList } = useAuth();
+    const { user, logout, watchList, openAuthModal } = useAuth();
     const navigate = useNavigate();
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
@@ -18,11 +18,18 @@ const Profile = () => {
 
     if (!user) {
         return (
-            <div className="profile-page container flex-center" style={{ height: '100vh', flexDirection: 'column' }}>
-                <h2>Please Sign In to view your profile</h2>
-                <button className="btn btn-primary" onClick={() => navigate('/')} style={{ marginTop: '1rem' }}>
-                    Go Home
-                </button>
+            <div className="profile-page container flex-center" style={{ minHeight: '80vh', flexDirection: 'column', textAlign: 'center', padding: 'calc(var(--nav-height) + 2rem) 16px 2rem', boxSizing: 'border-box' }}>
+                <h2 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.8rem)', marginBottom: '1.25rem', color: '#fff', maxWidth: '320px', lineHeight: 1.3 }}>
+                    Please Sign In to view your profile
+                </h2>
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    <button className="btn btn-primary" onClick={openAuthModal}>
+                        Sign In
+                    </button>
+                    <button className="btn btn-secondary" onClick={() => navigate('/')}>
+                        Browse Movies
+                    </button>
+                </div>
             </div>
         );
     }

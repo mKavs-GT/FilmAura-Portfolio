@@ -92,3 +92,24 @@
     width: 150px;
   }
 }
+
+@media (max-width: 480px) {
+  .loading-logo {
+    font-size: 2.3rem;
+    letter-spacing: -1px;
+  }
+
+  .loading-bar-container {
+    width: 130px;
+  }
+}
+
+@media (max-width: 360px) {
+  .loading-logo {
+    font-size: 2rem;
+  }
+
+  .loading-bar-container {
+    width: 110px;
+  }
+}

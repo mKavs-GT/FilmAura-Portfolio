@@ -92,3 +92,40 @@
 .slider-arrow.hidden {
     display: none;
 }
+
+@media (max-width: 768px) {
+    .content-row-container {
+        margin-bottom: 2rem;
+        padding: 0 16px;
+    }
+
+    .row-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .row-content {
+        padding: 0.5rem 0;
+        gap: 0.65rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .slider-arrow {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-row-container {
+        margin-bottom: 1.6rem;
+        padding: 0 12px;
+    }
+
+    .row-title {
+        font-size: 1.05rem;
+    }
+
+    .row-content {
+        gap: 0.5rem;
+    }
+}

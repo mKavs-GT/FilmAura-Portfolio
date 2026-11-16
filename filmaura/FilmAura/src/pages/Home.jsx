@@ -586,6 +586,8 @@ const Home = () => {
         ],
     };
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
     return (
         <div className="home-page">
             <Hero />
@@ -594,7 +596,7 @@ const Home = () => {
                 className="container content-container"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 1 }}
+                transition={{ delay: isMobile ? 0.3 : 1.5, duration: isMobile ? 0.5 : 1 }}
             >
 
                 {/* Continue Watching Section - Shows after content is watched */}

@@ -42,3 +42,23 @@
     font-size: 0.8rem;
     opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 24px 16px;
+    }
+
+    .footer-content {
+        gap: 10px;
+    }
+
+    .footer-copyright {
+        font-size: 0.82rem;
+    }
+
+    .footer-disclaimer {
+        font-size: 0.75rem;
+        max-width: 320px;
+        line-height: 1.4;
+    }
+}

@@ -103,6 +103,8 @@ const Hero = () => {
         return 'hero-title-short'; // e.g., Black Adam
     };
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
     return (
         <div className="hero">
             <AnimatePresence mode="wait">
@@ -113,11 +115,11 @@ const Hero = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{
-                        duration: 1.5,
+                        duration: isMobile ? 0.8 : 1.5,
                         ease: [0.33, 1, 0.68, 1] // Power4.easeOut equivalent
                     }}
                 >
-                    <img src={activeMovie.image} alt={activeMovie.title} className="hero-bg-image" />
+                    <img src={activeMovie.image} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = endgamePoster; }} alt={activeMovie.title} className="hero-bg-image" />
                     <div className="hero-gradient-overlay"></div>
                 </motion.div>
             </AnimatePresence>
@@ -126,11 +128,11 @@ const Hero = () => {
                 <div className="hero-content">
                     <motion.h1
                         className={`hero-title ${getTitleClass(activeMovie.title)}`}
-                        initial={{ y: 30, opacity: 0, filter: 'blur(10px)' }}
-                        animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+                        initial={{ y: isMobile ? 15 : 30, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
                         transition={{
-                            delay: 0.8, // Wait for background to partially reveal
-                            duration: 0.8,
+                            delay: isMobile ? 0.1 : 0.8,
+                            duration: isMobile ? 0.4 : 0.8,
                             ease: "easeOut"
                         }}
                     >
@@ -141,7 +143,7 @@ const Hero = () => {
                         className="hero-meta"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 1, duration: 0.5 }}
+                        transition={{ delay: isMobile ? 0.2 : 1, duration: isMobile ? 0.3 : 0.5 }}
                     >
                         <div className="meta-item rating">
                             <FaStar className="star-icon" />
@@ -154,18 +156,18 @@ const Hero = () => {
 
                     <motion.p
                         className="hero-description"
-                        initial={{ y: 20, opacity: 0 }}
+                        initial={{ y: isMobile ? 10 : 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 1.1, duration: 0.6 }}
+                        transition={{ delay: isMobile ? 0.25 : 1.1, duration: isMobile ? 0.4 : 0.6 }}
                     >
                         {activeMovie.description}
                     </motion.p>
 
                     <motion.div
                         className="hero-actions-wrapper"
-                        initial={{ y: 20, opacity: 0 }}
+                        initial={{ y: isMobile ? 10 : 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 1.2, duration: 0.6 }}
+                        transition={{ delay: isMobile ? 0.3 : 1.2, duration: isMobile ? 0.4 : 0.6 }}
                     >
                         <div className="hero-actions">
                             <button

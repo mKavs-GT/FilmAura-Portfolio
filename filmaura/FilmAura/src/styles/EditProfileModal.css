@@ -271,29 +271,73 @@
 @media (max-width: 768px) {
     .edit-profile-modal {
         width: 95%;
-        max-height: 95vh;
+        max-height: 92vh;
+        max-height: 92dvh;
+    }
+
+    .edit-profile-modal .close-btn {
+        top: 1rem;
+        right: 1rem;
+        width: 44px;
+        height: 44px;
     }
 
     .edit-profile-modal h2 {
-        font-size: 1.5rem;
-        padding: 1.5rem 1.5rem 1rem;
+        font-size: 1.4rem;
+        padding: 1.25rem 1.25rem 0.8rem;
     }
 
     .edit-profile-form {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
 
     .avatar-preview {
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px;
+        padding: 0.8rem;
     }
 
     .form-actions {
         flex-direction: column;
+        gap: 0.75rem;
+        padding-top: 1.25rem;
+        margin-top: 1.25rem;
     }
 
     .form-actions .btn {
         width: 100%;
+        min-height: 46px;
+    }
+}
+
+@media (max-width: 480px) {
+    .edit-profile-modal {
+        width: calc(100% - 20px);
+    }
+
+    .edit-profile-modal h2 {
+        font-size: 1.25rem;
+        padding: 1rem 1rem 0.75rem;
+    }
+
+    .edit-profile-form {
+        padding: 1rem;
+    }
+
+    .avatar-preview {
+        width: 90px;
+        height: 90px;
+    }
+
+    .avatar-upload-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
     }
 }
 

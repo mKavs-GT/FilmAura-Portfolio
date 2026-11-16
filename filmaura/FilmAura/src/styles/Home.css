@@ -50,3 +50,23 @@
     /* Adjust margin up to overlap with hero gradient if desired */
     margin-top: -60px;
 }
+
+@media (max-width: 768px) {
+    .content-container {
+        margin-top: -30px;
+    }
+
+    .home-page {
+        padding-bottom: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-container {
+        margin-top: -10px;
+    }
+
+    .home-page {
+        padding-bottom: 2rem;
+    }
+}

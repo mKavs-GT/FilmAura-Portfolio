@@ -500,25 +500,248 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .movie-hero {
+        min-height: auto;
+        padding-top: calc(var(--nav-height, 60px) + 15px);
+    }
+
+    .hero-content {
+        padding: 1.5rem 0 2rem;
+    }
+
+    .back-btn {
+        padding: 0.5rem 1.1rem;
+        margin-bottom: 1.25rem;
+        font-size: 0.9rem;
+        min-height: 40px;
+    }
+
+    .hero-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .hero-poster {
+        width: 190px;
+        max-width: 65%;
+        margin: 0 auto;
+    }
+
+    .hero-info {
+        width: 100%;
+    }
+
     .movie-title {
-        font-size: 2.5rem;
+        font-size: 2.1rem;
+        margin-bottom: 0.5rem;
     }
 
     .movie-tagline {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .movie-meta-info {
+        justify-content: center;
+        gap: 0.6rem;
+        margin-bottom: 1.5rem;
     }
 
     .hero-actions {
         flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
     }
 
     .btn-play-large,
     .btn-add-large {
         width: 100%;
         justify-content: center;
+        padding: 0.85rem 1.5rem;
+        font-size: 1rem;
+        min-height: 48px;
+    }
+
+    .quick-info {
+        padding: 1.2rem;
+        text-align: left;
+        gap: 0.75rem;
+    }
+
+    .info-item {
+        flex-direction: column;
+        gap: 0.2rem;
+        align-items: flex-start;
+    }
+
+    .info-label {
+        min-width: auto;
+        font-size: 0.8rem;
+    }
+
+    .info-value {
+        font-size: 0.92rem;
+    }
+
+    .movie-content {
+        padding: 1.5rem 0;
+    }
+
+    .content-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .content-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .movie-overview {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .movie-details-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem 1rem;
+        margin-top: 1rem;
+        padding: 1rem 0;
+    }
+
+    .detail-item {
+        gap: 0.35rem;
+    }
+
+    .detail-label {
+        font-size: 0.75rem;
+    }
+
+    .detail-value {
+        font-size: 0.92rem;
     }
 
     .trailers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ratings-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 1rem;
+    }
+
+    .rating-card {
+        padding: 1.2rem 0.8rem;
+    }
+
+    .rating-source {
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .rating-value {
+        font-size: 1.6rem;
+    }
+
+    .season-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .season-selector {
+        width: 100%;
+    }
+
+    .season-selector select {
+        width: 100%;
+        padding: 0.7rem 1rem;
+    }
+
+    .episode-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .episode-card:hover {
+        transform: none;
+    }
+
+    .episode-number {
+        min-width: auto;
+        font-size: 1.2rem;
+    }
+
+    .episode-info h4 {
+        font-size: 1.05rem;
+    }
+
+    .episode-info p {
+        font-size: 0.88rem;
+    }
+
+    .cast-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .cast-list-item {
+        padding: 0.9rem;
+    }
+
+    .cast-list .cast-name {
+        font-size: 0.92rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-poster {
+        width: 160px;
+    }
+
+    .movie-title {
+        font-size: 1.65rem;
+    }
+
+    .movie-meta-info {
+        font-size: 0.85rem;
+    }
+
+    .meta-item {
+        font-size: 0.85rem;
+    }
+
+    .rating-badge {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .movie-details-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.9rem 0.75rem;
+    }
+
+    .cast-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 360px) {
+    .movie-title {
+        font-size: 1.45rem;
+    }
+
+    .hero-poster {
+        width: 140px;
+    }
+
+    .movie-details-grid {
         grid-template-columns: 1fr;
     }
 }

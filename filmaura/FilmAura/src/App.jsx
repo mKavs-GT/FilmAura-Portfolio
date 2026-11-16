@@ -11,14 +11,29 @@ import LoadingScreen from './components/LoadingScreen';
 import './styles/index.css';
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('noloading') || sessionStorage.getItem('filmaura_loaded')) {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  const handleLoadingFinished = () => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('filmaura_loaded', 'true');
+    }
+    setLoading(false);
+  };
 
   return (
     <AuthProvider>
       <WatchLaterProvider>
         <AnimatePresence mode="wait">
           {loading ? (
-            <LoadingScreen key="loading" onFinished={() => setLoading(false)} />
+            <LoadingScreen key="loading" onFinished={handleLoadingFinished} />
           ) : (
             <Router>
               <div className="app">

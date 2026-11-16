@@ -35,6 +35,17 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isMobileMenuOpen]);
+
     const navLinks = [
         { name: 'Home', path: '/', icon: <FaHome /> },
         { name: 'Movies', path: '/movies', icon: <FaFilm /> },
@@ -45,77 +56,117 @@ const Navbar = () => {
         { name: 'My Profile', path: '/profile', icon: <FaUser /> },
     ];
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
     return (
-        <motion.nav
-            className={`navbar ${isScrolled ? 'scrolled' : ''}`}
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
-        >
-            <div className="navbar-container container">
-                <div className="navbar-logo">
-                    <Link to="/" className="navbar-logo-link">
-                        <img src={logo} alt="FilmAura Logo" className="logo-img" />
-                        <span className="logo-text">FILMAURA</span>
-                    </Link>
-                </div>
-
+        <>
+            {isMobileMenuOpen && (
                 <div
-                    className={`navbar-links ${isMobileMenuOpen ? 'active' : ''}`}
-                    onMouseEnter={() => window.innerWidth <= 768 && setIsMobileMenuOpen(true)}
-                    onMouseLeave={() => window.innerWidth <= 768 && setIsMobileMenuOpen(false)}
-                >
-                    {navLinks.map((link) => (
-                        <NavLink
-                            key={link.name}
-                            to={link.path}
-                            className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                            <span className="nav-icon">{link.icon}</span>
-                            <span className="nav-text">{link.name}</span>
-                        </NavLink>
-                    ))}
-                </div>
-
-                <div className="navbar-actions">
-                    <div className={`search-box ${isSearchOpen ? 'expanded' : ''}`}>
-                        <button className="action-icon search-trigger" onClick={() => setIsSearchOpen(!isSearchOpen)}>
-                            <FaSearch />
-                        </button>
-                        <input
-                            type="text"
-                            className="search-input"
-                            placeholder="Titles, people, genres"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
-                        />
-                    </div>
-                    <div className="action-icon">
-                        <FaBell />
-                    </div>
-
-                    {user ? (
-                        <Link to="/profile" className="user-avatar-link">
-                            <img src={user.avatar} alt="User" className="user-avatar" />
+                    className="mobile-menu-backdrop"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    aria-label="Close menu"
+                />
+            )}
+            <motion.nav
+                className={`navbar ${isScrolled ? 'scrolled' : ''}`}
+                initial={{ y: isMobile ? 0 : -100, opacity: isMobile ? 1 : 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: isMobile ? 0 : 1, duration: isMobile ? 0.3 : 0.8, ease: "easeOut" }}
+            >
+                <div className="navbar-container container">
+                    <div className="navbar-logo">
+                        <Link to="/" className="navbar-logo-link" onClick={() => setIsMobileMenuOpen(false)}>
+                            <img src={logo} alt="FilmAura Logo" className="logo-img" />
+                            <span className="logo-text">FILMAURA</span>
                         </Link>
-                    ) : (
-                        <button className="btn-signin" onClick={openAuthModal}>
-                            Sign In
-                        </button>
-                    )}
+                    </div>
 
                     <div
-                        className="mobile-toggle"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        onMouseEnter={() => window.innerWidth <= 768 && setIsMobileMenuOpen(true)}
+                        className={`navbar-links ${isMobileMenuOpen ? 'active' : ''}`}
                     >
-                        {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+                        <div className="mobile-drawer-header">
+                            {user ? (
+                                <Link to="/profile" className="mobile-user-profile" onClick={() => setIsMobileMenuOpen(false)}>
+                                    {user.avatar ? (
+                                        <img src={user.avatar} alt="User" className="mobile-user-avatar" />
+                                    ) : (
+                                        <div className="mobile-user-avatar-placeholder"><FaUser /></div>
+                                    )}
+                                    <div className="mobile-user-info">
+                                        <span className="mobile-user-name">{user.name || 'FilmAura User'}</span>
+                                        <span className="mobile-user-email">{user.email}</span>
+                                    </div>
+                                </Link>
+                            ) : (
+                                <button
+                                    className="btn btn-primary mobile-drawer-signin"
+                                    onClick={() => { setIsMobileMenuOpen(false); openAuthModal(); }}
+                                >
+                                    Sign In to FilmAura
+                                </button>
+                            )}
+                        </div>
+
+                        {navLinks.map((link) => (
+                            <NavLink
+                                key={link.name}
+                                to={link.path}
+                                className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                <span className="nav-icon">{link.icon}</span>
+                                <span className="nav-text">{link.name}</span>
+                            </NavLink>
+                        ))}
+                    </div>
+
+                    <div className="navbar-actions">
+                        <div className={`search-box ${isSearchOpen ? 'expanded' : ''}`}>
+                            <button
+                                className="action-icon search-trigger"
+                                onClick={() => setIsSearchOpen(!isSearchOpen)}
+                                aria-label="Toggle search"
+                            >
+                                <FaSearch />
+                            </button>
+                            <input
+                                type="text"
+                                className="search-input"
+                                placeholder="Titles, people, genres"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
+                            />
+                        </div>
+                        <div className="action-icon bell-icon" aria-label="Notifications">
+                            <FaBell />
+                        </div>
+
+                        {user ? (
+                            <Link to="/profile" className="user-avatar-link" onClick={() => setIsMobileMenuOpen(false)}>
+                                {user.avatar ? (
+                                    <img src={user.avatar} alt="User" className="user-avatar" />
+                                ) : (
+                                    <div className="user-avatar-placeholder"><FaUser size={14} /></div>
+                                )}
+                            </Link>
+                        ) : (
+                            <button className="btn-signin" onClick={openAuthModal}>
+                                Sign In
+                            </button>
+                        )}
+
+                        <button
+                            className="mobile-toggle"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                        >
+                            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+                        </button>
                     </div>
                 </div>
-            </div>
-        </motion.nav>
+            </motion.nav>
+        </>
     );
 };
 

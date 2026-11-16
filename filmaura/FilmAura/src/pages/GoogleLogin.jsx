@@ -23,21 +23,23 @@ const GoogleLogin = () => {
 
     return (
         <div style={{
-            height: '100vh',
+            minHeight: '100vh',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor: '#f0f2f5',
-            color: '#202124'
+            color: '#202124',
+            padding: '16px'
         }}>
             <div style={{
                 backgroundColor: 'white',
-                padding: '48px 40px 36px',
+                padding: 'clamp(28px, 6vw, 48px) clamp(20px, 5vw, 40px) 36px',
                 borderRadius: '8px',
                 boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
                 width: '100%',
                 maxWidth: '450px',
-                textAlign: 'center'
+                textAlign: 'center',
+                boxSizing: 'border-box'
             }}>
                 <img src={logo} alt="FilmAura Logo" style={{ height: '50px', marginBottom: '24px', objectFit: 'contain' }} />
                 <h1 style={{ fontSize: '24px', fontWeight: '400', marginBottom: '8px', color: '#202124' }}>Sign in</h1>

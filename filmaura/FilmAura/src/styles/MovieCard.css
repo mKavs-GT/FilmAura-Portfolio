@@ -187,3 +187,87 @@
     opacity: 0;
     transition: opacity 0.2s;
 }
+
+/* Quick list button (hidden on desktop) */
+.card-quick-list-btn {
+    display: none;
+}
+
+/* Mobile Responsive Adaptations */
+@media (max-width: 768px) {
+    .movie-card {
+        width: 155px;
+        height: 232px;
+        border-radius: 6px;
+    }
+
+    /* In grid views, expand card to fill the cell with native 2:3 poster aspect ratio */
+    .content-grid .movie-card {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 2 / 3;
+    }
+
+    /* Disable hover scale on touch mobile */
+    .movie-card:hover {
+        transform: none;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+    }
+
+    .card-hover-info {
+        display: none !important;
+    }
+
+    .card-quick-list-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: white;
+        font-size: 0.85rem;
+        z-index: 15;
+        cursor: pointer;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        transition: all 0.2s ease;
+    }
+
+    .card-quick-list-btn.active {
+        background-color: rgba(70, 211, 105, 0.3);
+        border-color: #46d369;
+        color: #46d369;
+    }
+
+    .card-quick-list-btn:active {
+        transform: scale(0.9);
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-card {
+        width: 135px;
+        height: 202px;
+    }
+
+    .card-quick-list-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 0.75rem;
+        top: 6px;
+        right: 6px;
+    }
+}
+
+@media (max-width: 360px) {
+    .movie-card {
+        width: 125px;
+        height: 188px;
+    }
+}
