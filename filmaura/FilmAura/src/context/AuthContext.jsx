@@ -48,6 +48,7 @@ export const AuthProvider = ({ children }) => {
     const login = (userData) => {
         setUser(userData);
         setIsAuthModalOpen(false);
+        showNotification(`Signed in successfully! Welcome back, ${userData.name || 'Member'}.`, 'added');
     };
 
     const logout = () => {
@@ -57,6 +58,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('filmaura_user');
         localStorage.removeItem('filmaura_watchlist');
         localStorage.removeItem('filmaura_continue');
+        showNotification('Signed out successfully. Session closed.', 'removed');
     };
 
     const openAuthModal = () => setIsAuthModalOpen(true);

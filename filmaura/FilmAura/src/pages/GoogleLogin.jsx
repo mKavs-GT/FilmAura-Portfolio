@@ -65,7 +65,22 @@ const GoogleLogin = () => {
                         />
                     </div>
 
-                    <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginTop: '40px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '40px' }}>
+                        <button
+                            type="button"
+                            onClick={() => navigate('/')}
+                            style={{
+                                background: 'transparent',
+                                border: 'none',
+                                color: '#1a73e8',
+                                fontWeight: '500',
+                                fontSize: '14px',
+                                cursor: 'pointer',
+                                padding: '8px 0'
+                            }}
+                        >
+                            Cancel
+                        </button>
                         <button type="submit" style={{
                             backgroundColor: '#1a73e8',
                             color: 'white',
